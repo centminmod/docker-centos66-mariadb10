@@ -1,0 +1,10 @@
+# rpm --import http://yum.mariadb.org/RPM-GPG-KEY-MariaDB
+# /etc/yum.repos.d/mariadb.repo
+# yum install MariaDB-server MariaDB-client
+# http://downloads.mariadb.org/mariadb/repositories/
+[mariadb]
+name = MariaDB
+baseurl = http://yum.mariadb.org/10.0/centos6-amd64
+gpgkey=https://yum.mariadb.org/RPM-GPG-KEY-MariaDB
+gpgcheck=1
+exclude=MariaDB-Galera-server
