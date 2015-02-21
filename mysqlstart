@@ -1,3 +1,4 @@
 #!/bin/sh
 
-mysqld_safe --defaults-file=/etc/my.cnf
+#mysqld_safe --defaults-file=/etc/my.cnf
+/usr/bin/supervisord -n -c /etc/supervisord.conf
