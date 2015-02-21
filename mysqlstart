@@ -2,3 +2,5 @@
 
 #mysqld_safe --defaults-file=/etc/my.cnf
 /usr/bin/supervisord -n -c /etc/supervisord.conf
+sleep 4
+mysqlcheck -q -r -A
