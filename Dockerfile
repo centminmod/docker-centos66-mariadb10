@@ -3,7 +3,7 @@
 FROM centos:6.6
 MAINTAINER George Liu <https://github.com/centminmod/docker-centos66-mariadb10>
 # Setup MariaDB 10 on CentOS 6.6
-RUN yum -y install epel-release nano which perl-DBI python-setuptools && rm -rf /var/cache/*; echo "" > /var/log/yum.log && easy_install pip && pip install supervisor
+RUN yum -y install epel-release nano which perl-DBI python-setuptools && rm -rf /var/cache/*; echo "" > /var/log/yum.log && easy_install pip && pip install supervisor && pip install supervisor-stdout
 ADD supervisord.conf /etc/supervisord.conf
 ADD supervisord_init /etc/rc.d/init.d/supervisord
 RUN chmod +x /etc/rc.d/init.d/supervisord && mkdir -p /etc/supervisord.d/ && touch /var/log/supervisord.log && chmod 0666 /var/log/supervisord.log && rpm --import http://yum.mariadb.org/RPM-GPG-KEY-MariaDB
