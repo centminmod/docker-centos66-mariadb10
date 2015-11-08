@@ -12,9 +12,9 @@ RUN echo "exclude=*.i386 *.i586 *.i686 nginx* php* mysql*">> /etc/yum.conf && rm
 RUN rm -rf /var/lib/rpm/__db.00* && rpm --rebuilddb && yum -y install MariaDB-client MariaDB-common MariaDB-compat MariaDB-devel MariaDB-server MariaDB-shared && rm -rf /var/cache/* && echo "" > /var/log/yum.log;
 ADD my.cnf /etc/my.cnf
 ADD mysqlsetup /root/tools/mysqlsetup
-RUN chmod +x /root/tools/mysqlsetup; sync; && /root/tools/mysqlsetup
+RUN chmod +x /root/tools/mysqlsetup; sync; /root/tools/mysqlsetup
 ADD mysqlstart /root/tools/mysqlstart
-RUN chmod +x /root/tools/mysqlstart; sync; && ls -lah /var/lib/mysql && tail -80 /var/log/mysqld.log && yum -y install perl-DBD-MySQL && yum clean all && rm -rf /var/cache/* && echo "" > /var/log/yum.log && echo "" > /var/log/mysqld.log && echo "" > /var/log/yum.log && echo "" > /var/log/secure && echo "" > /var/log/messages
+RUN chmod +x /root/tools/mysqlstart; sync; ls -lah /var/lib/mysql && tail -80 /var/log/mysqld.log && yum -y install perl-DBD-MySQL && yum clean all && rm -rf /var/cache/* && echo "" > /var/log/yum.log && echo "" > /var/log/mysqld.log && echo "" > /var/log/yum.log && echo "" > /var/log/secure && echo "" > /var/log/messages
 
 # Expose 3306 to outside
 EXPOSE 3306
